@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:fragment="head">
+
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+<title>Home Page</title>
+
+<link rel="stylesheet" type="text/css"
+	th:href="@{/semantic-ui/semantic.min.css}" />
+
+</head>
+
+<nav th:fragment="navbar" class="ui inverted menu">
+	<a class="header item" th:href="@{/}">
+    	SkIDentity Demo Client
+  	</a>
+	<a class="item" th:href="@{/}" th:classappend="${#httpServletRequest.requestURI=='/'} ? active">Home</a> 
+	<div class="right menu">
+		<a sec:authorize="!isAuthenticated()" class="ui item" th:href="@{/profile}">Sign in</a>
+		<a sec:authorize="isAuthenticated()" class="ui item" th:href="@{/profile}" th:classappend="${#httpServletRequest.requestURI=='/profile'} ? active">Profile</a>
+		<a sec:authorize="isAuthenticated()" class="ui item" th:href="@{/logout}">Sign out</a>
+	</div>
+</nav>
+
+<footer th:fragment="footer" class="footer">
+	<!-- TODO write something! -->
+</footer>
+
+<th:block th:fragment="scripts">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script th:src="@{/semantic-ui/semantic.min.js}"></script>
+</th:block>
+
+</html>

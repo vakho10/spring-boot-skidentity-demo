@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head th:replace="fragment :: head"></head>
+
+<body>
+
+	<div class="ui container">
+
+		<!-- Menu -->
+		<nav th:replace="fragment :: navbar"></nav>
+
+		<h1 class="ui header">Profile Page</h1>
+		<p>The information retrieved from SkIDentity is shown below. You may include more information if you desire to in SkIDDetails class.</p>
+		
+		<table class="ui cell table">
+			<thead>
+				<tr>
+					<th>Key</th>
+					<th>Value</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Username</td>
+					<td th:text="${user.username}"></td>
+				</tr>
+				<tr>
+					<td>First name</td>
+					<td th:text="${user.firstName}"></td>
+				</tr>
+				<tr>
+					<td>Last name</td>
+					<td th:text="${user.lastName}"></td>
+				</tr>
+				<tr>
+					<td>Country</td>
+					<td th:text="${user.country}"></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+	<th:block th:replace="fragment :: scripts"></th:block>
+
+</body>
+</html>

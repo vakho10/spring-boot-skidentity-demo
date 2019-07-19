@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head th:replace="fragment :: head"></head>
+
+<body>
+
+	<div class="ui container">
+
+		<!-- Menu -->
+		<nav th:replace="fragment :: navbar"></nav>
+
+		<div class="ui placeholder segment">
+			<div class="ui icon header">
+				<i class="info icon"></i> This is a demo website for SkIDentity authentication. Try to log into the profile page.
+			</div>
+		</div>
+
+	</div>
+
+	<th:block th:replace="fragment :: scripts"></th:block>
+
+</body>
+</html>
