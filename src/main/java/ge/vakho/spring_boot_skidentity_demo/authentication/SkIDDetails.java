@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import javax.security.auth.x500.X500Principal;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -27,6 +28,7 @@ public class SkIDDetails implements UserDetails {
 	private String username;
 	private String firstName;
 	private String lastName;
+	private X500Principal issuer;
 	private ISO3166CountryCode country;
 
 	public SkIDDetails(HttpSession session, Collection<? extends GrantedAuthority> authorities) {
@@ -40,6 +42,7 @@ public class SkIDDetails implements UserDetails {
 		firstName = extractor.getFirstName();
 		lastName = extractor.getLastName();
 		country = extractor.getCountry();
+		issuer = extractor.getIDIssuer();
 
 		this.authorities = Collections.unmodifiableSet(sortAuthorities(authorities));
 	}
@@ -76,6 +79,10 @@ public class SkIDDetails implements UserDetails {
 
 			return g1.getAuthority().compareTo(g2.getAuthority());
 		}
+	}
+	
+	public X500Principal getIssuer() {
+		return issuer;
 	}
 
 	public String getFirstName() {
